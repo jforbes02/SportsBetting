@@ -1,5 +1,5 @@
-from flask import Flask, sessions
-from flask_login import LoginManager, UserMixin, current_user, LoginManager, UserMixin, login_user
+from flask import Flask, sessions, request
+from flask_login import UserMixin, current_user, LoginManager, UserMixin, login_user
 from database import db, Config
 
 app = Flask(__name__)
@@ -12,6 +12,13 @@ login_manager.init_app(app)
 @app.route('/')
 def home():  # put application's code here
     return 'Hello World!'
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
 
 with app.app_context():

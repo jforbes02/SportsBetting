@@ -3,6 +3,7 @@ from app import *
 
 def deposit(amount):
     return 0
+
 def withdraw(self, amount):
     if amount > self.wallet:
         raise ValueError("Insufficient funds")
